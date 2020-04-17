@@ -1,0 +1,58 @@
+.searchBox {background-color: #eeeeee;}
+.searchButton {
+    background-color: #129fe5; 
+    border: none;
+    color: white;
+    padding: 12px 40px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 8px;
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    margin-left: auto;
+}
+.searchButton:hover {background-color: #4bbcf4;}
+
+.smallButton {
+    background-color: #129fe5; 
+    border: none;
+    color: white;
+    padding: 1px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 8px;
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    margin-left: auto;
+}
+.smallButton:hover {background-color: #4bbcf4;}
+
+.center {text-align:center; display:block; margin:auto;}
+
+.spaced {padding: 20px 5px;}
+
+.title {padding-top: 25px; margin-bottom: 35px; font-size: 48px; color: #757575;}
+
+.resultTable {margin-top: 22px; margin-left: 20px; margin-right: 20px; -webkit-transition-duration: 0.4s; transition-duration: 1s;}
+.resultTable th, td {text-align: left;}
+.resultTable tr {background-color: #eeeeee; text-align: left; }
+.resultTable tr:hover {background-color: #fffed9;}
+
+.upperCase {text-transform:uppercase;}
+
+select, input {
+    padding: 5px 20px;
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #cfcfcf;
+    color: gray;
+    background-color: #f1f1f1;
+}
+

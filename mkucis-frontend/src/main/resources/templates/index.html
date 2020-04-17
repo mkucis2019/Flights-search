@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <title>Pretraga avionskih letova - Mario Kučiš</title> 
+ 
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+ <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+ <link rel="stylesheet" type="text/css" href="/css/angularjs-datetime-picker.css">
+ <link rel="stylesheet" type="text/css" href="/css/ng-table.min.css">
+ <link rel="stylesheet" type="text/css" href="/css/search.css">
+
+ <script src="/js/angular.min.js"></script>
+ <script src="/js/angularjs-datetime-picker.min.js"></script>
+ <script src="/js/ng-table.min.js"></script>
+
+</head>
+<body>
+
+
+<a href="/"><img class="center spaced" src="/img/logo.png" alt="Početna"></a>
+
+<div class='searchBox center'>
+<h1 class='title'>Pretraga avionskih letova</h1>
+ 
+<div ng-app="zadatak" ng-controller="airportController">
+
+<form class="form-inline">
+
+<div class="form-group">Polazište:
+<select id='srcAirport' ng-model="option1.value">
+<option ng-repeat="x in airports" value="{{x.iataCode}}">{{x.name}}</option>
+</select></div>
+
+<div class="form-group">
+Odredište:
+<select ng-model="option2.value">
+<option ng-repeat="x in airports" value="{{x.iataCode}}">{{x.name}}</option>
+</select></div>
+<div class="form-group">
+Datum polaska:
+<input ng-model="date1" datetime-picker date-format="yyyy-MM-dd" date-only />
+</div>
+
+<div class="form-group">
+Datum povratka:
+<input ng-model="date2" datetime-picker date-format="yyyy-MM-dd" date-only />
+</div>
+
+<div class="form-group">Broj putnika:
+<input type="text" size="4" ng-model="passengers">
+</div>
+
+
+<div class="form-group">
+Valuta:
+<select ng-model="selectedCurrency">
+<option>USD</option>
+<option>EUR</option>
+<option>HRK</option>
+</select>
+</div>
+
+</form>
+
+<div ng-controller="searchController">
+<button class='searchButton' ng-click="search()"  type="submit">Traži</button>
+<button class='searchButton' ng-click="loadAdmin()"  type="submit">Dodaj aerodrom</button>
+
+<div ng-show="searchStatus == 1">
+<img class="spaced" src="/img/ajax-loader.gif" alt="Loading">Tražim...
+</div>
+
+<div ng-show="searchStatus == 2">
+<table ng-table="tableParams" id="results" class="table table-condensed resultTable" show-filter="false" >
+    <tr ng-repeat="obj in viewData">
+        <td title="'Polazni aerodrom'">{{obj.from}}</td>
+		<td title="'Odredišni aerodrom'">{{obj.to}}</td>
+		<td title="'Datum polaska'">{{obj.datefrom | date: 'dd.MM.yyyy HH:mm:ss'}}</td>
+		<td title="'Datum povratka'">{{obj.dateto | date: 'dd.MM.yyyy HH:mm:ss'}}</td>
+		<td title="'Broj presjedanja u odlasku'">{{obj.nFlightsFrom}}</td>
+		<td title="'Broj presjedanja u povratku'">{{obj.nFlightsTo}}</td>
+		<td title="'Broj putnika'">{{obj.nPassengers}}</td>
+		<td title="'Cijena'">{{obj.price}}</td>
+		<td title="'Valuta'">{{obj.currency}}</td>
+    </tr>
+</table></div>
+
+<div ng-show="searchStatus == 3">
+<img class="spaced" src="/img/error_small.png" alt="Greška">Nema rezultata
+</div>
+
+</div>
+</div>
+</div>
+
+<script src="/js/application/app.js"></script> 
+<script src="/js/controller/airport.js"></script> 
+<script src="/js/controller/search.js"></script> 
+
+</body>
+</html>
